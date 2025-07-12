@@ -2,54 +2,77 @@
 include 'koneksi.php';
 session_start();
 
-// Pastikan user login dan memiliki role 'user'
 if (!isset($_SESSION['user']) || $_SESSION['role'] != 'user') {
     header("Location: index.html");
     exit;
 }
 
-// Ambil nama dari session (bukan email)
 $nama = $_SESSION['user'];
 
-// Ambil id_user berdasarkan nama
 $getUser = mysqli_fetch_assoc(mysqli_query($conn, "SELECT id_user FROM user WHERE nama='$nama'"));
-
 if (!$getUser) {
-    echo "User tidak ditemukan. Pastikan login sebagai user.";
+    echo "User tidak ditemukan.";
     exit;
 }
-
 $id_user = $getUser['id_user'];
-
-// Ambil daftar buku yang tersedia
 $data = mysqli_query($conn, "SELECT * FROM buku WHERE status='tersedia'");
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Pinjam Buku</title>
-  <link rel="stylesheet" href="assets/style.css">
+    <meta charset="UTF-8">
+    <title>Pinjam Buku</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h3>Daftar Buku yang Tersedia</h3>
-  <table border="1">
-    <tr>
-      <th>Judul</th>
-      <th>Pengarang</th>
-      <th>Tahun Terbit</th>
-      <th>Aksi</th>
-    </tr>
-    <?php while ($d = mysqli_fetch_array($data)) { ?>
-      <tr>
-        <td><?= $d['judul'] ?></td>
-        <td><?= $d['pengarang'] ?></td>
-        <td><?= $d['tahun_terbit'] ?></td>
-        <td><a href="proses_pinjam.php?id_buku=<?= $d['id_buku'] ?>&id_user=<?= $id_user ?>">Pinjam</a></td>
-      </tr>
-    <?php } ?>
-  </table>
-  <br>
-  <a href="dashboard_user.php">Kembali ke Dashboard</a>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="assets/crud.jpg" alt="User Avatar">
+                <p><?= $_SESSION['user']; ?></p>
+                <small>USER</small>
+            </div>
+            <a href="dashboard_user.php" class="logout-btn">← Kembali</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-dashboard">
+            <div class="top-nav">
+                <h1>Daftar Buku Tersedia</h1>
+                <div class="nav-links">
+                    <a href="dashboard_user.php">Dashboard</a>
+                    <a href="riwayat_user.php">Riwayat</a>
+                    <a href="#">Profil</a>
+                </div>
+            </div>
+
+            <div class="content-wrapper">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Judul</th>
+                            <th>Pengarang</th>
+                            <th>Tahun Terbit</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($d = mysqli_fetch_array($data)) { ?>
+                        <tr>
+                            <td><?= $d['judul'] ?></td>
+                            <td><?= $d['pengarang'] ?></td>
+                            <td><?= $d['tahun_terbit'] ?></td>
+                            <td>
+                                <a class="btn-pinjam" href="proses_pinjam.php?id_buku=<?= $d['id_buku'] ?>&id_user=<?= $id_user ?>">Pinjam</a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

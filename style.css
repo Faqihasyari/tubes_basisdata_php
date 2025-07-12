@@ -314,3 +314,47 @@ select {
   color: #444;
   font-weight: 500;
 }
+
+/* Styled Table */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.styled-table thead {
+  background-color: #4a00e0;
+  color: white;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 14px 20px;
+  text-align: left;
+}
+
+.styled-table tr {
+  border-bottom: 1px solid #eee;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f3f3f3;
+}
+
+/* Button Pinjam */
+.btn-pinjam {
+  background-color: #4a00e0;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-pinjam:hover {
+  background-color: #3600b3;
+}
