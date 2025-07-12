@@ -358,3 +358,12 @@ select {
 .btn-pinjam:hover {
   background-color: #3600b3;
 }
+
+.row-terlambat {
+  background-color: #ffefef;
+}
+
+/* Tambahan untuk kolom aksi */
+.styled-table td:last-child {
+  text-align: center;
+}
