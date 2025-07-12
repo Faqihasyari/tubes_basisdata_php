@@ -17,7 +17,7 @@ if ($_SESSION['role'] != 'admin') {
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="profile-section">
-      <img src="assets/user.png" alt="Admin Image" />
+      <img src="assets/crud.jpg" alt="Admin Image" />
       <p><?= $_SESSION['user']; ?></p>
       <small>ADMIN</small>
     </div>

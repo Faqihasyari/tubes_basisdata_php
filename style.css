@@ -21,7 +21,7 @@ body {
   display: flex;
   background-color: #fff;
   width: 900px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -44,7 +44,8 @@ body {
   height: auto;
 }
 
-h2, h3 {
+h2,
+h3 {
   color: #333;
   text-align: left;
   margin-bottom: 10px;
@@ -145,7 +146,9 @@ table {
   background: white;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
@@ -169,7 +172,7 @@ select {
 /* Dashboard Layout */
 .dashboard-wrapper {
   display: flex;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .sidebar {
@@ -252,7 +255,7 @@ select {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .info-card h3 {
@@ -271,7 +274,7 @@ select {
   background-color: white;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .welcome-box h2 {
@@ -286,7 +289,7 @@ select {
 /* Atur wrapper supaya tinggi penuh layar */
 .dashboard-wrapper {
   display: flex;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   min-height: 100vh;
 }
 
@@ -295,7 +298,7 @@ select {
   background-color: white;
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   margin-top: 20px;
 }
 
@@ -321,7 +324,7 @@ select {
   border-collapse: collapse;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
