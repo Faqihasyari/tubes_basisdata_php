@@ -7,7 +7,7 @@ $password = $_POST['password'];
 $role     = $_POST['role'];
 $kode_admin = isset($_POST['kode_admin']) ? $_POST['kode_admin'] : null;
 
-if (empty($nama) || empty($email) || empty($password) || empty($role)) {
+if (empty($nama) || empty($email) || empty($password)) {
     echo "<script>alert('Semua field wajib diisi!'); window.location='register.html';</script>";
     exit;
 }

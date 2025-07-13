@@ -1,19 +1,25 @@
 <?php
 include 'koneksi.php';
-$id_buku = $_GET['id_buku'];
-$id_user = $_GET['id_user'];
-$tanggal = date('Y-m-d');
+session_start();
 
-// Cek jumlah buku yang sedang dipinjam user
-$cekPinjam = mysqli_query($conn, "SELECT COUNT(*) AS total FROM peminjaman WHERE id_user=$id_user AND status_pinjam='dipinjam'");
-$total = mysqli_fetch_assoc($cekPinjam)['total'];
-
-if ($total >= 3) {
-    echo "<script>alert('Maksimal 3 buku boleh dipinjam!'); window.location='pinjam.php';</script>";
+if (!isset($_GET['id_buku']) || !isset($_GET['id_user'])) {
+    echo "Data tidak lengkap.";
     exit;
 }
 
-// Lanjut proses pinjam
-mysqli_query($conn, "INSERT INTO peminjaman (id_user, id_buku, tanggal_pinjam) VALUES ($id_user, $id_buku, '$tanggal_pinjam')");
-mysqli_query($conn, "UPDATE buku SET status='dipinjam' WHERE id_buku=$id_buku");
-header("Location: pinjam.php");
+$id_buku = $_GET['id_buku'];
+$id_user = $_GET['id_user'];
+$tanggal_pinjam = date('Y-m-d');
+
+// Insert data peminjaman
+$query = mysqli_query($conn, "INSERT INTO peminjaman (id_user, id_buku, tanggal_pinjam, status_pinjam)
+                              VALUES ('$id_user', '$id_buku', '$tanggal_pinjam', 'dipinjam')");
+
+// Update status buku menjadi dipinjam
+$update = mysqli_query($conn, "UPDATE buku SET status='dipinjam' WHERE id_buku='$id_buku'");
+
+if ($query && $update) {
+    header("Location: riwayat_user.php");
+} else {
+    echo "Gagal memproses peminjaman.";
+}
